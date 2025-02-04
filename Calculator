@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="/storage/emulated/0/calculator.css"/>
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>calculate me!</h1>
+  <div class="container">
+    <input class="input" type="text"/>
+    <div class="row">
+      <button class="button">7</button>
+      <button class="button">8</button>
+      <button class="button">9</button>
+      <button class="button">×</button>
+      </div>
+      <div class="row">
+      <button class="button">4</button>
+      <button class="button">5</button>
+      <button class="button">6</button>
+      <button class="button"> - </button>
+      </div>
+     
+      <div class="row">
+      <button class="button">1</button>
+      <button class="button">2</button>
+      <button class="button">3</button>
+      <button class="button">+</button>
+      </div>
+      <div class="row">
+      <button class="button">%</button>
+      <button class="button">0</button>
+      <button class="button">.</button>
+      <button class="button">=</button>
+      </div>
+    <div class="row">
+      <button class="button">C</button> 
+     </div>
+  </div>
+  <script>
+ document.addEventListener("DOMContentLoaded", function () {
+    let inputField = document.querySelector(".input"); // Select input field
+   let buttons = document.querySelectorAll(".button"); // Select all buttons
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            let buttonText = this.innerText;
+
+            if (buttonText === "=") {
+                try {
+                    inputField.value = eval(inputField.value.replace("×", "*").replace("%", "/100"));
+                } catch {
+                    inputField.value = "Error";
+                }
+            } else if (buttonText === "C") {
+                inputField.value = ""; // Clear the input
+            } else {
+                inputField.value += buttonText;
+            }
+        });
+    });
+});
+  </script>
+</body>
+</html>
